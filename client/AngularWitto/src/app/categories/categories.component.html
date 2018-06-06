@@ -1,0 +1,31 @@
+<section id="categories">
+  <div class="container p-5">
+    <app-message></app-message>
+    <h4 class="display-4">Type de cuisine</h4>
+    <hr>
+    <div *ngIf="!categories" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <div *ngIf="categories" class="list-group">
+      <a *ngFor="let category of categories" routerLink="/categories/{{ category._id }}" class="list-group-item list-group-item-action">
+      {{ category.name }}
+      </a>
+    </div>
+    <hr *ngIf="data.user.isRestorer" style="margin-top: 12rem;">
+    <div *ngIf="data.user.isRestorer" class="card bg-light mt-5">
+      <div class="card-body">
+        <h4 class="card-title">Ajouter une nouvelle specialité</h4>
+        <hr>
+        <div class="form">
+          <div class="form-group">
+            <label>Cuisine</label>
+            <input type="text" name="newCategory" class="form-control" [(ngModel)]="newCategory">
+          </div>
+          <button type="button" class="btn btn-info" (click)="addCategory()" [disabled]="btnDisabled">Ajouter specialité</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<section id="settings">
+  <div class="container p-5">
+    <h4 class="display-4">Configuration du compte</h4>
+    <hr>
+    <app-message></app-message>
+    <div *ngIf="!currentSettings" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <div *ngIf="currentSettings" class="card bg-light">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label class="form-control-label">Nom</label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="currentSettings.name">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Email</label>
+            <input type="email" name="email" class="form-control" [(ngModel)]="currentSettings.email">
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" name="isRestorer" class="form-check-input" [(ngModel)]="currentSettings.isRestorer">Restaurateur
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Nouveau mot de passe</label>
+            <input type="password" name="newPwd" class="form-control" [(ngModel)]="currentSettings.newPwd">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Confirmer mot de passe</label>
+            <input type="password" name="pwdConfirm" class="form-control" [(ngModel)]="currentSettings.pwdConfirm">
+          </div>
+          <button type="button" class="btn btn-success" (click)="update()" [disabled]="btnDisabled">Mettre à jour</button>
+          <button type="button" class="btn btn-danger ml-4" (click)="delete()" [disabled]="btnDisabled">Supprimer le compte</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
